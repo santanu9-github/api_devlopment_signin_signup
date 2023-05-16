@@ -46,11 +46,11 @@ public class AuthController {
     @PostMapping("/signup")
     public  ResponseEntity<?> registerUser(@RequestBody SignUpDto signUpDto){
         //check username exist or not
-        if(userRepository.existByUsername(signUpDto.getUsername())){
+        if(userRepository.existsByUsername(signUpDto.getUsername())){
             return new ResponseEntity<>("Username is already exist",HttpStatus.BAD_REQUEST);
         }
         //check email exist or not in DB
-        if(userRepository.existByEmail(signUpDto.getEmail())){
+        if(userRepository.existsByEmail(signUpDto.getEmail())){
             return new ResponseEntity<>("Email is already exist",HttpStatus.BAD_REQUEST);
         }
         //create user object
